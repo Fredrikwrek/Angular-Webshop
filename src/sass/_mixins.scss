@@ -1,0 +1,105 @@
+@mixin standardbutton {
+  button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    background: $standardDarkColor;
+    color: $standardLightColor;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 300ms ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  button:hover {
+    background: $standardGreenColor;
+  }
+  button:disabled {
+    background-color: rgb(255, 74, 74);
+    cursor: unset;
+  }
+}
+@mixin addAndRemoveButtons {
+  button {
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: $standardDarkColor;
+    color: $standardLightColor;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 300ms ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  button:hover {
+    background: $standardGreenColor;
+  }
+  button:disabled {
+    background-color: rgb(255, 74, 74);
+    cursor: unset;
+  }
+}
+@mixin styleSpanInRow {
+  span {
+    padding: 0.5rem 1rem;
+    background: $standardDarkColor;
+    color: $standardLightColor;
+  }
+}
+
+@mixin boxShadow {
+  -webkit-box-shadow: -4px -1px 8px -1px rgba(143, 143, 143, 1);
+  -moz-box-shadow: -4px -1px 8px -1px rgba(143, 143, 143, 1);
+  box-shadow: -4px -1px 8px -1px rgba(143, 143, 143, 1);
+}
+@mixin headerShadow {
+  -webkit-box-shadow: 0px -5px 21px 8px rgba(143, 143, 143, 1);
+  -moz-box-shadow: 0px -5px 21px 8px rgba(143, 143, 143, 1);
+  box-shadow: 0px -5px 21px 8px rgba(143, 143, 143, 1);
+}
+@mixin standardInputStyle {
+  input:hover {
+    background: $standardLightColorWithOpacity;
+  }
+  input:focus::placeholder {
+    color: transparent;
+  }
+  input::placeholder {
+    color: $standardLightColorWithOpacity;
+  }
+  input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    color: $standardLightColor;
+    border-bottom: 1px solid $standardLightColorWithOpacity;
+  }
+}
+@mixin removeOverflowText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin flexWithDirection($row) {
+  display: flex;
+  flex-direction: $row;
+}
+@mixin checkoutHeader {
+  h4 {
+    background-color: $standardDarkColor;
+    margin: unset;
+    padding: 15px;
+    border-bottom: 1px solid $standardLightColorWithOpacity;
+    font-size: 15px;
+  }
+}

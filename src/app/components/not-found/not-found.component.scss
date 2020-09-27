@@ -1,0 +1,9 @@
+@import "../../../sass/mixins";
+@import "../../../sass/variables";
+.notFoundContainer {
+  padding: 40px;
+  h3 {
+    margin-top: unset;
+  }
+  @include standardbutton();
+}

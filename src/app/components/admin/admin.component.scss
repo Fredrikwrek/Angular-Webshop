@@ -1,0 +1,88 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.adminContainer {
+  padding: 40px;
+  h2 {
+    text-align: center;
+    font-size: 40px;
+  }
+  .login {
+    form {
+      width: 100%;
+      div {
+        border-bottom: 1px solid $standardLightColorWithOpacity;
+        @include standardInputStyle();
+        input:hover {
+          background-color: $standardDarkColorWithOpacity;
+        }
+        input {
+          background-color: $standardDarkColor;
+          border: unset;
+        }
+      }
+      @include standardbutton();
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+.orderContainer {
+  .headOrderContainer {
+    @include standardbutton();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .orderTable {
+    @include addAndRemoveButtons();
+    @include styleSpanInRow();
+    width: 100%;
+    .tableRow {
+      width: 100%;
+      @include flexWithDirection(row);
+      border-bottom: 1px solid $standardLightColorWithOpacity;
+      .tableRowContent {
+        width: 80%;
+        @include flexWithDirection(column);
+        border-right: 1px solid $standardLightColorWithOpacity;
+        .customerRows,
+        .customerHeaderRows {
+          @include flexWithDirection(row);
+          .idCol,
+          .emailCol {
+            width: 40%;
+            border-bottom: 1px solid $standardLightColorWithOpacity;
+            @include removeOverflowText();
+          }
+          .priceCol {
+            width: 20%;
+            border-bottom: 1px solid $standardLightColorWithOpacity;
+            @include removeOverflowText();
+          }
+        }
+        .orderHeaderRows,
+        .customerHeaderRows {
+          font-weight: bold;
+        }
+        .orderRows,
+        .orderHeaderRows {
+          @include flexWithDirection(row);
+          font-style: italic;
+          .productNameCol {
+            width: 80%;
+            @include removeOverflowText();
+          }
+          .amountCol {
+            width: 20%;
+            @include removeOverflowText();
+          }
+        }
+      }
+      button {
+        width: 20%;
+      }
+    }
+  }
+}

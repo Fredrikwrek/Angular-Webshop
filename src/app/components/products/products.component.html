@@ -1,0 +1,16 @@
+<div class="productPage">
+  <div
+    class="movieBox"
+    *ngFor="let movie of movies"
+    routerLink="/products/{{ movie.id }}"
+    routerLinkActive="activeRouterLinks"
+    [state]="{ data: movie }"
+  >
+    <div>
+      <h3>{{ movie.name }}</h3>
+    </div>
+    <img [src]="movie.imageUrl" />
+    <p>{{ movie.price }} kr</p>
+    <button (click)="$event.stopPropagation(); addToCart(movie)">Buy</button>
+  </div>
+</div>

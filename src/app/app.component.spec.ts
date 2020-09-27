@@ -1,15 +1,17 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MockProductDataService } from './services/mock/mock-product-data.service';
+import { ProductDataService } from './services/product-data.service';
+import { Router } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
+      declarations: [AppComponent],
+      providers: [
+        { provide: ProductDataService, useClass: MockProductDataService },
+        { provide: Router, useClass: RouterTestingModule },
       ],
     }).compileComponents();
   }));
@@ -25,11 +27,11 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('FredriksWebShop');
   });
-
-  it('should render title', () => {
+  it('should receive categories', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.loadCategories();
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('FredriksWebShop app is running!');
+    expect(app.categories.length).toBe(3);
   });
 });

@@ -1,0 +1,37 @@
+<div class="checkOutContainer">
+  <h2>Checkout</h2>
+  <div class="formContainer" *ngIf="!paymentDone">
+    <div class="priceBlock">
+      <h4>Amount to pay</h4>
+      <div class="totalPriceDisplay">{{ order.totalPrice }} kr</div>
+    </div>
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitOrder()">
+      <div class="emailBlock">
+        <h4>Email</h4>
+        <input
+          type="email"
+          formControlName="createdBy"
+          placeholder="info@something.se"
+        />
+      </div>
+      <div class="paymentMethodBlock">
+        <h4>Paymentmethod</h4>
+        <select formControlName="paymentMethods">
+          <option
+            *ngFor="let obj of paymentMethods"
+            [ngValue]="obj.paymentMethod"
+          >
+            {{ obj.name }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="!checkOutForm.valid">
+        Proceed payment
+      </button>
+    </form>
+  </div>
+  <div class="orderDone" *ngIf="paymentDone">
+    <p>Thanks for your order!</p>
+    <button routerLink="/products">Continue shoping</button>
+  </div>
+</div>

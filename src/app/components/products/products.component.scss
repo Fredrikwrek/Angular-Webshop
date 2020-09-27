@@ -1,0 +1,33 @@
+@import "../../../sass/mixins";
+@import "../../../sass/variables";
+.productPage {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .movieBox {
+    width: 200px;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
+    @include boxShadow();
+    @include flexWithDirection(column);
+    align-items: center;
+    cursor: pointer;
+    div {
+      width: 100%;
+      h3 {
+        @include removeOverflowText();
+        margin-top: unset;
+        text-align: center;
+      }
+    }
+    img {
+      height: 200px;
+    }
+    @include standardbutton();
+    p {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.cartContainer {
+  padding: 40px;
+  .cartMainHeader {
+    border-bottom: solid $standardLightColor 1px;
+    background-color: $standardGreenColor;
+    display: flex;
+    justify-content: space-between;
+    color: $standardLightColor;
+    padding-right: 50px;
+    padding-left: 50px;
+    p {
+      font-size: 35px;
+    }
+    p:nth-child(2) {
+      font-weight: bold;
+    }
+  }
+  .cart {
+    width: 100%;
+    background-color: $standardDarkColor;
+    @include flexWithDirection(column);
+    justify-content: space-between;
+    .tableContainer {
+      min-height: 350px;
+      border-bottom: solid $standardLightColor 1px;
+      .cartRows {
+        width: 100%;
+        @include flexWithDirection(row);
+        border-bottom: solid $standardLightColorWithOpacity 1px;
+        @include styleSpanInRow();
+        @include addAndRemoveButtons();
+      }
+      .cartHeaders {
+        font-weight: bold;
+        border-bottom: solid $standardLightColor 1px;
+      }
+      .cartHeaders,
+      .cartRows {
+        .nameCol {
+          width: 40%;
+          @include removeOverflowText();
+        }
+        .amountCol,
+        .priceCol,
+        .sumCol,
+        .addCol,
+        .removeCol {
+          width: calc(60% / 5);
+        }
+      }
+      .cartError {
+        padding: 10px;
+        color: $standardLightColor;
+      }
+    }
+    @include standardbutton();
+    .checkoutButton {
+      width: 100%;
+    }
+  }
+}

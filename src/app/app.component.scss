@@ -1,0 +1,97 @@
+@import "../sass/mixins";
+@import "../sass/variables";
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: calc(40px - 20vh);
+  background-color: $standardYellowColor;
+  height: 20vh;
+  @include flexWithDirection(column);
+  justify-content: space-between;
+  .topContent {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      margin-left: 40px;
+      color: $headerFontColor;
+    }
+    .admin {
+      margin-top: 20px;
+      margin-right: 30px;
+      color: $headerFontColor;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  nav {
+    @include headerShadow();
+    @include flexWithDirection(row);
+    color: $standardLightColor;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: $standardDarkColor;
+    .navLinks:hover {
+      background-color: $standardLightColorWithOpacity;
+      cursor: pointer;
+    }
+    .home {
+      width: 25%;
+    }
+    .products:hover {
+      position: relative;
+      background-color: $standardLightColorWithOpacity;
+    }
+    .products {
+      width: 25%;
+      .dropdown {
+        background-color: $standardDarkColor;
+        div:hover {
+          background-color: $standardLightColorWithOpacity;
+        }
+      }
+    }
+    .search {
+      display: flex;
+      width: 25%;
+      align-items: center;
+      input:focus::placeholder {
+        color: transparent;
+      }
+      input {
+        color: $standardLightColor;
+        width: 80%;
+        height: 40px;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+      }
+      input::placeholder {
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: 100;
+        color: $standardLightColorWithOpacity;
+      }
+      button {
+        color: $standardLightColor;
+        width: 20%;
+        height: 40px;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    .cart {
+      width: 25%;
+    }
+  }
+}
+.pageContainer {
+  min-height: 80vh;
+  background-color: $standardLightColor;
+}

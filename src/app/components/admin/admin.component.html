@@ -1,0 +1,49 @@
+<div class="adminContainer">
+  <div class="login" *ngIf="!getAccess()">
+    <h2>Login to admin account</h2>
+    <form [formGroup]="login" (ngSubmit)="onLogin()">
+      <div>
+        <input type="text" formControlName="userName" placeholder="User name" />
+      </div>
+      <div>
+        <input type="text" formControlName="password" placeholder="Password" />
+      </div>
+      <button type="submit" [disabled]="!login.valid">Login</button>
+    </form>
+  </div>
+  <div class="orderContainer" *ngIf="getAccess()">
+    <div class="headOrderContainer">
+      <h2>Admin page</h2>
+      <button class="adminLogout" (click)="onLogout()">Logout</button>
+    </div>
+    <div class="orderTable">
+      <div class="tableRow" *ngFor="let order of orders">
+        <div class="tableRowContent">
+          <div class="customerHeaderRows">
+            <span class="idCol">Customer ID</span>
+            <span class="emailCol">Customer E-mail</span>
+            <span class="priceCol">Total price</span>
+          </div>
+          <div class="customerRows">
+            <span class="idCol">{{ order.id }}</span>
+            <span class="emailCol">{{ order.createdBy }}</span>
+            <span class="priceCol">{{ order.totalPrice }} kr</span>
+          </div>
+          <div class="orderHeaderRows">
+            <span class="productNameCol">Product name</span>
+            <span class="amountCol">Amount</span>
+          </div>
+          <div class="orderRows" *ngFor="let item of order.orderRows">
+            <span class="productNameCol">{{
+              productName(item.productId)
+            }}</span>
+            <span class="amountCol">{{ item.amount }} pce</span>
+          </div>
+        </div>
+        <button (click)="removeOrder(order.id); $event.target.disabled = true">
+          Remove order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

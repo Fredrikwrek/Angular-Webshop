@@ -1,0 +1,39 @@
+<div class="cartContainer" *ngIf="!readyForCheckOut">
+  <div class="cartMainHeader">
+    <p>
+      <i class="fas fa-shopping-cart"></i>
+    </p>
+    <p>SUM</p>
+    <p>{{ cart.totalPrice }} kr</p>
+  </div>
+  <div class="cart">
+    <div class="tableContainer">
+      <div class="cartHeaders cartRows">
+        <span class="nameCol nameHeader">Name</span>
+        <span class="amountCol amountHeader">Amount</span>
+        <span class="priceCol priceHeader">Price</span>
+        <span class="sumCol sumHeader">Sum</span>
+        <span class="addCol addHeader"></span>
+        <span class="removeCol removeHeader"></span>
+      </div>
+      <div class="whiteBorder"></div>
+      <div class="cartRows" *ngFor="let item of cart.products">
+        <span class="nameCol">{{ item.productName }}</span>
+        <span class="amountCol">{{ item.amount }} st</span>
+        <span class="priceCol">{{ item.price }} kr</span>
+        <span class="sumCol">{{ item.price * item.amount }} kr</span>
+        <button class="addCol" (click)="add(item.productId)">
+          <i class="fas fa-plus-square"></i>
+        </button>
+        <button class="removeCol" (click)="remove(item.productId)">
+          <i class="fas fa-minus-square"></i>
+        </button>
+      </div>
+      <div class="cartError" *ngIf="showErrorMessage">
+        Please add a product to the cart before checking out
+      </div>
+    </div>
+    <button class="checkoutButton" (click)="checkOut()">Checkout</button>
+  </div>
+</div>
+<app-check-out *ngIf="readyForCheckOut"></app-check-out>

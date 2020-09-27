@@ -1,0 +1,7 @@
+<div class="detailContainer">
+  <h2>{{ movie.name }}</h2>
+  <img [src]="movie.imageUrl" />
+  <p>{{ movie.description }}</p>
+  <p class="detailPrice">{{ movie.price }} kr</p>
+  <button (click)="addToCart(movie)">Buy</button>
+</div>
